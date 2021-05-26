@@ -15,11 +15,11 @@ import java.util.Map;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class IndexController {
 
-    @GetMapping("api/getUserInfo")
-    public ResponseEntity<Map> getUserInfo(HttpServletRequest request) throws SQLException {
+    @GetMapping("/api/getUserInfo")
+    public ResponseEntity<?> getUserInfo(HttpServletRequest request) throws SQLException {
         Map<String, Object> userMap = new HashMap<>();
         String name = " 张宇乐";
         String uk = "105281";

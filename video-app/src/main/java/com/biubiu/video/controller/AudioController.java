@@ -13,12 +13,8 @@ public class AudioController {
 
     @PostMapping(value = "/parse")
     public ResponseEntity<?> audioParse(String type, String input) {
-
-        // https://v.douyin.com/J8C4SrV/
-
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> resp = restTemplate.getForEntity("https://v.douyin.com/J8C4SrV/", String.class);
-
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

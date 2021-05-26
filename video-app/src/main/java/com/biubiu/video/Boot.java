@@ -10,8 +10,6 @@ public class Boot implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> resp = restTemplate.getForEntity("https://v.douyin.com/J8C4SrV/", String.class);
-        System.out.println(resp);
+
     }
 }
