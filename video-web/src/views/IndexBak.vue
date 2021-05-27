@@ -44,8 +44,8 @@
           </ul>
           <div class="user-center_office">
             <div class="login-btn-wrap fl">
-              <a @click="login()">登录</a>
-              <a @click="logup()">注册</a>
+              <a href="javascript: env.login();">登录</a>
+              <a href="javascript: env.logup();">注册</a>
             </div>
 
             <a class="return-web" href="/">返回主站</a>
@@ -133,21 +133,18 @@
     <br>
     <el-divider content-position="left"> </el-divider>
     <Footer></Footer>
-    <AccessPanel :dialogVisible="dialogVisible" :closePanel="closePanel"></AccessPanel>
   </div>
 </template>
 
 <script>
 import ClassifyList from '../components/ClassifyList';   // 引入子组件
 import Footer from '../components/Footer';
-import AccessPanel from '../views/AccessPanel';
 // @ is an alias to /src
 export default {
-  name: 'Index',
+  name: 'IndexBak',
   data() {
     return {
       show: 'display:none',
-      dialogVisible: 'display:none;',
     }
   },
   methods: {
@@ -157,21 +154,10 @@ export default {
     closeHotSearchPanel() {
       this.show = "display:none";
     },
-    closePanel() {
-      this.dialogVisible = "display:none";
-    },
-    login() {
-      console.log("111");
-      this.dialogVisible = "display:block";
-    },
-    logup() {
-
-    }
   },
   components: {
     ClassifyList: ClassifyList,
     Footer: Footer,
-    AccessPanel: AccessPanel,
   },
 
 }
@@ -263,7 +249,7 @@ video {
 }
 .bottom-linear{
   width: 100%;
-  height: 80px;
+  height: 280px;
   background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.80) 28%);
   position: absolute;
   left: 0;
