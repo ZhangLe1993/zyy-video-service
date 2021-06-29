@@ -8,7 +8,7 @@
         <div class="login-box_close" @click="handleClose"><i class="iconfont icon-guanbi"></i></div>
         <p class="login-box_logo"><img src="//static.699pic.com/images/index/logo2.png" alt=""></p>
 
-        <p class="login-box_desc" :style="operationToolsVisibleStyle"><span>超过18,084,862名用户加入摄图网畅享商用版权</span></p>
+        <p class="login-box_desc" :style="operationToolsVisibleStyle"><span>超过18,084,862名用户加入沐婉清网观看视频</span></p>
 
         <div class="operation-tools" :style="operationToolsVisibleStyle">
           <a class="new-phone-btn" href="javascript:void(0);" name="login_phone" @click="toPhoneLoginPanel(login)">
@@ -18,7 +18,7 @@
             <div class="lastTime">（上次登录）</div></a>
           <!-- <a href="javascript:;" class="switch-login-passwd">账号密码登录</a> -->
           <div class="operation-tool contact-qq">
-            <a name="login_qq" onclick="window.open('/?s=/Home/Auth/qqLogin','QQ登录到摄图网', 'width=600,height=520,left='+qqLeft+',top='+ allTop +'toolbar=no,resizable=no')">
+            <a name="login_qq" onclick="window.open('/?s=/Home/Auth/qqLogin','QQ登录到沐婉清网', 'width=600,height=520,left=200,top=200,toolbar=no,resizable=no')">
               <div class="operation-area">
                 <i class="iconfont icon-waiyin-qq"></i>
               </div>
@@ -26,7 +26,7 @@
             </a>
           </div>
           <div class="operation-tool contact-wx">
-            <a name="login_weixin" href="javascript:void(0);" onclick="showWeixinPop()">
+            <a name="login_weixin" href="javascript:void(0);" @click="showWeixinPop()">
               <div class="operation-area">
                 <i class="iconfont icon-waiyin-weixin"></i>
               </div>
@@ -43,24 +43,19 @@
           </p>
           <div class="login-area_content">
             <div :class="verfyLoginPanelVisible">
-              <input @input="onChange" type="text" maxlength="11" class="login-area_number js-input-phone js-focus-phone" name="phone_code_login" data-phone="login-area_number" placeholder="请输入手机号"/>
-              <div class="error-phone" style="display: none; opacity: 0;"></div>
+              <input @input="onChange" type="text" maxlength="11" class="login-area_number js-input-phone js-focus-phone" name="phone_code_login" data-phone="login-area_number" placeholder="请输入手机号或邮箱"/>
               <div class="code">
                 <input type="number" class="login-area_code js-area-code" name="code_code_login" data-area="login-area_code" placeholder="请输入验证码" autocomplete="off">
                 <form theme="simple" onsubmit="return false;" style="height:100%;">
                   <button :class="showVerfyBtn" name="getcode_code_login">获取验证码</button>
                 </form>
-
-                <div class="error-verify" style="display: none; opacity: 0;"></div>
               </div>
               <button class="js-phone-login-btn login-area_item-passwd js-btn-submit" name="btn_code_login">登录</button>
             </div>
             <div :class="passwordLoginPanelVisible">
               <input type="text" class="login-area_account js-focus-phone" name="phone_passwd_login" placeholder="请输入手机或邮箱" autocomplete="off">
-              <div class="error-phone" style="display: none; opacity: 0;"></div>
               <div>
                 <input type="password" class="login-area_pwd" name="passwd_passwd_login" placeholder="请输入密码" autocomplete="off">
-                <div class="error-passwd" style="display: none; opacity: 0;"></div>
               </div>
               <a href="/register/resetPasswd" target="_blank">忘记密码</a>
               <button class="js-account-login-btn  js-btn-submit" name="btn_passwd_login">登录</button>
@@ -71,38 +66,33 @@
         <!-- 注册内容part -->
         <div :class="phoneRegistPanelClass">
           <p class="regist-area_ways">
-            <span class="active" name="tab_code_regist">验证码注册</span>
-            <span name="tab_passwd_regist">账号密码注册</span>
+            <span :class="registActive" name="tab_code_regist" @click="toVerfyRegistPanel" >验证码注册</span>
+            <span :class="registNotActive" @click="toPasswordRegistPanel" name="tab_passwd_regist">账号密码注册</span>
           </p>
           <div class="regist-area_content">
-            <div class="regist-area_item regist-area_item-phone js-area_item">
+            <div :class="verfyRegistPanelVisible">
 
-              <input type="text" maxlength="11" class="regist-area_number js-input-phone js-focus-phone" name="phone_code_regist" data-phone="regist-area_number" placeholder="请输入手机号">
-              <div class="error-phone" style="display: none; opacity: 0;"></div>
+              <input type="text" maxlength="11" class="regist-area_number js-input-phone js-focus-phone" name="phone_code_regist" data-phone="regist-area_number" placeholder="请输入手机号或邮箱">
               <div class="code">
                 <input type="number" class="regist-area_code js-area-code" name="code_code_regist" data-area="js-area-code" placeholder="请输入验证码" autocomplete="off">
                 <form theme="simple" onsubmit="return false;" style="height:100%;">
                   <button class="disabled js-get-verify-btn js-get-verify-btn-1" name="getcode_code_regist">获取验证码</button>
                 </form>
-                <div class="error-verify" style="display: none; opacity: 0;"></div>
               </div>
               <button class="js-phone-regist-btn js-btn-submit" name="btn_code_regist">注册</button>
             </div>
-            <div class="regist-area_item regist-area_item-passwd js-area_item hide">
-              <input type="text" class="regist-area_account js-input-phone js-focus-phone" name="phone_passwd_regist" data-phone="regist-area_account" placeholder="请输入手机号" autocomplete="off">
-              <div class="error-phone" style="display: none; opacity: 0;"></div>
+            <div :class="passwordRegistPanelVisible">
+              <input type="text" class="regist-area_account js-input-phone js-focus-phone" name="phone_passwd_regist" data-phone="regist-area_account" placeholder="请输入手机号或邮箱" autocomplete="off">
               <div class="code">
                 <input type="number" class="regist-area_code js-area-code" name="code_passwd_regist" data-area="regist-area_code" placeholder="请输入验证码" autocomplete="off">
                 <form theme="simple" onsubmit="return false;" style="height:100%;">
                   <button class="disabled js-get-verify-btn js-get-verify-btn-2" name="getcode_passwd_regist">获取验证码</button>
                 </form>
-                <div class="error-verify" style="display: none; opacity: 0;"></div>
               </div>
               <div>
                 <input type="password" class="regist-area_pwd js-area-pwd" name="passwd_passwd_regist" placeholder="请设置密码" autocomplete="off">
-                <div class="error-passwd" style="display: none; opacity: 0;"></div>
               </div>
-              <button class="js-account-regist-btn js-btn-submit" name="btn_passwd_regist">注册</button>
+              <button class="js-account-regist-btn js-btn-submit" name="btn_passwd_regist" style="margin-top: 15px;">注册</button>
             </div>
           </div>
         </div>
@@ -139,11 +129,15 @@ export default {
       showVerfyBtn: 'disabled js-get-verify-btn js-get-verify-btn-0',
       loginActive: 'active',
       loginNotActive: '',
+      registActive: 'active',
+      registNotActive: '',
       verfyLoginPanelVisible: 'login-area_item login-area_item-phone js-area_item',
       passwordLoginPanelVisible: 'login-area_item login-area_item-passwd js-area_item hide',
+      verfyRegistPanelVisible: 'regist-area_item regist-area_item-phone js-area_item',
+      passwordRegistPanelVisible: 'regist-area_item regist-area_item-passwd js-area_item hide',
       login: true,
-      loginWA: { qqLogin: 'QQ登录', wxLogin: '微信登录', title: '手机登录' },
-      registWA: { qqRegist: 'QQ注册', wxRegist: '微信注册', title: '手机注册' },
+      loginWA: { qqLogin: 'QQ登录', wxLogin: '微信登录', title: '手机/邮箱登录' },
+      registWA: { qqRegist: 'QQ注册', wxRegist: '微信注册', title: '手机/邮箱注册' },
       tkClass: 'regist-text-tips hide',
     };
   },
@@ -156,6 +150,7 @@ export default {
       this.phoneRegistPanelClass = 'regist-area_new';
       this.goRegistQqWx = 'go-regist_qqwx';
       this.goLoginQqWx = 'go-login_qqwx hide';
+      this.tkClass = 'regist-text-tips hide';
     },
     toPhoneLoginPanel(login) {
       if(login) {
@@ -185,6 +180,7 @@ export default {
     showWeixinPop() {
 
     },
+    // 登录面板密码和验证码切换
     toPasswordLoginPanel() {
       this.loginActive = '';
       this.loginNotActive = 'active';
@@ -196,6 +192,20 @@ export default {
       this.loginNotActive = '';
       this.verfyLoginPanelVisible= 'login-area_item login-area_item-phone js-area_item';
       this.passwordLoginPanelVisible= 'login-area_item login-area_item-passwd js-area_item hide';
+    },
+
+    // 注册密码和验证码面板切换
+    toVerfyRegistPanel() {
+      this.registActive = 'active';
+      this.registNotActive = '';
+      this.verfyRegistPanelVisible= 'regist-area_item regist-area_item-phone js-area_item';
+      this.passwordRegistPanelVisible= 'regist-area_item regist-area_item-passwd js-area_item hide';
+    },
+    toPasswordRegistPanel() {
+      this.registActive = '';
+      this.registNotActive = 'active';
+      this.verfyRegistPanelVisible= 'regist-area_item regist-area_item-phone js-area_item hide';
+      this.passwordRegistPanelVisible= 'regist-area_item regist-area_item-passwd js-area_item';
     },
     /**
      *

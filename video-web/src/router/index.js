@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../views/Index.vue'
-import Default from '../views/Default.vue'
+import AccountIndex from '../views/AccountIndex.vue'
 
 Vue.use(VueRouter)
 
@@ -18,10 +18,10 @@ Vue.use(VueRouter)
       meta:  {title: '沐婉清文化影视网 - 一个专注于古风音乐的网站' },
     },
     {
-      path: '/default',
-      name: 'Default',
-      component: Default,
-      meta:  { title: '沐婉清文化影视网 - 一个专注于古风音乐的网站' },
+      path: '/account/index',
+      name: 'AccountIndex',
+      component: AccountIndex,
+      meta:  { title: '沐婉清文化影视网 - 创作者服务平台' },
     },
 ]
 

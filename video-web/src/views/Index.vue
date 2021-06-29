@@ -48,6 +48,54 @@
               <a @click="logup()">注册</a>
             </div>
 
+            <div class="idx-info-wrap fl video-userdrop-spec">
+              <div class="head-wrap fl">
+                <div class="img">
+                  <a href="/community/myPermission"><img src="//thirdwx.qlogo.cn/mmopen/ibYvc6Zd00icN2A0urey20HVRAVg6QibytRJlV1BBwlKlDfz2sjnqyACib0foQjC2LBicFG1HHaicIicTQxh9vwlFhpk0PNXyL85j56/132" alt=""> </a>
+                </div>
+                <div class="video-userdrop-box">
+                  <div class="video-userdrop-info clearfix">
+                    <div class="video-userdrop-info-intro fl">
+                      <img class="video-userdrop-info-img" src="//thirdwx.qlogo.cn/mmopen/ibYvc6Zd00icN2A0urey20HVRAVg6QibytRJlV1BBwlKlDfz2sjnqyACib0foQjC2LBicFG1HHaicIicTQxh9vwlFhpk0PNXyL85j56/132" alt="">
+                      <div class="video-userdrop-info-name" style="text-align: left;">张音乐</div>
+                      <div class="video-userdrop-info-id">ID：33256859</div>
+                    </div>
+                    <div class="video-userdrop-info-btn">
+                      <a rel="nofollow" href="/my/account">个人中心</a>
+                      <a rel="nofollow" href="/auth/logout">退出</a>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="video-userdrop-links">
+                    <a rel="nofollow" href="/community/download?type=video" target="_blank">
+                      <i class="iconfont icon-shipin-x-xiazai"></i>
+                      <span>我的下载</span>
+                    </a>
+                    <a rel="nofollow" href="/u/33256859/favorite" target="_blank">
+                      <i class="iconfont icon-shipin-x-shoucang"></i>
+                      <span>我的收藏</span>
+                    </a>
+                    <a rel="nofollow" href="/community/myPermission" target="_blank">
+                      <i class="iconfont icon-shipin-x-shouquanzhengshu"></i>
+                      <span>我的关注</span>
+                    </a>
+                    <a rel="nofollow" href="/community/coupon" target="_blank" class="video-userdrop-links-coupon">
+                      <i class="iconfont icon-youhuiquan1"></i>
+                      <span>粉丝</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="InMail-block news_hover fl">
+                <div class="InMail-message">
+                  <i class="iconfont icon-header-xiaoxi"></i>
+                </div>
+                <div class="news_wrapper fr" data="" style="display: none;overflow: hidden;"></div>
+              </div>
+            </div>
+
             <a class="return-web" href="/">返回主站</a>
           </div>
         </div>
@@ -133,7 +181,7 @@
     <br>
     <el-divider content-position="left"> </el-divider>
     <Footer></Footer>
-    <AccessPanel :dialogVisible="dialogVisible" :closePanel="closePanel"></AccessPanel>
+    <AccessPanel :dialogVisible="dialogVisible" :closePanel="closePanel" ref="accessPanel"></AccessPanel>
   </div>
 </template>
 
@@ -161,10 +209,13 @@ export default {
       this.dialogVisible = "display:none";
     },
     login() {
-      console.log("111");
       this.dialogVisible = "display:block";
     },
     logup() {
+      this.dialogVisible = "display:block";
+      this.$refs.accessPanel.toRegistPanel();
+    },
+    temp() {
 
     }
   },
@@ -912,6 +963,183 @@ body {
   color: #666;
   font-size: 14px;
   font-family: "微软雅黑", Microsoft YaHei, Arial, Verdana;
+}
+
+.idx-info-wrap {
+  color: #fff;
+  margin-left: 20px;
+}
+
+.idx-info-wrap .head-wrap {
+  width: 30px;
+  height: 45px;
+  margin: 2px 12px 0 0;
+  position: relative;
+}
+
+.idx-info-wrap .head-wrap .img {
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.idx-info-wrap .head-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+img {
+  border: none;
+}
+
+.video-userdrop-spec .video-userdrop-box {
+  right: -106px;
+}
+
+.video-userdrop-box {
+  position: absolute;
+  top: 42px;
+  right: -30px;
+  width: 340px;
+  height: 204px;
+  padding: 14px 15px 0;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.20);
+  border-radius: 10px;
+  box-sizing: border-box;
+  background: #FFFFFF url(//static.699pic.com/images/video/video-userdrop-bg.png) no-repeat center top;
+  z-index: 5;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s;
+}
+
+.clearfix:after {
+  content: '.';
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+
+.video-userdrop-info-intro {
+  position: relative;
+  padding-left: 40px;
+}
+
+.video-userdrop-info-intro .video-userdrop-info-name {
+  height: 20px;
+  font-size: 14px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 20px;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.video-userdrop-info-intro .video-userdrop-info-id {
+  height: 20px;
+  font-size: 12px;
+  color: #999999;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.video-userdrop-info-btn {
+  float: right;
+  border-left: 1px dashed #BDD8E0;
+  padding-left: 15px;
+}
+
+.video-userdrop-info-btn a {
+  display: block;
+  font-size: 12px;
+  color: #999999;
+  letter-spacing: 0;
+  text-align: right;
+  line-height: 20px;
+  transition: all .2s;
+}
+
+.video-userdrop-links {
+  margin-top: 15px;
+  font-size: 0;
+  text-align: center;
+}
+
+.video-userdrop-links a {
+  display: inline-block;
+  margin: 0 15px;
+  line-height: initial;
+}
+
+.video-userdrop-links a:hover .iconfont, .video-userdrop-links a:hover span {
+  color: #33CFFF;
+}
+
+.video-userdrop-links a .iconfont {
+  font-size: 26px;
+  color: #C5C8D7;
+  transition: all .2s;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shipin-x-xiazai:before {
+  content: "\e743";
+}
+
+.icon-shipin-x-shoucang:before {
+  content: "\e74e";
+}
+
+.video-userdrop-links a:hover .iconfont, .video-userdrop-links a:hover span {
+  color: #33CFFF;
+}
+
+.icon-shipin-x-shouquanzhengshu:before {
+  content: "\e6fb";
+}
+
+.icon-youhuiquan1:before {
+  content: "\e6fb";
+}
+
+.video-userdrop-links a span {
+  display: block;
+  font-size: 12px;
+  color: #666666;
+  letter-spacing: 0;
+  margin-top: 4px;
+  transition: all .2s;
+}
+
+.head-wrap:hover .video-userdrop-box {
+  visibility: visible;
+  opacity: 1;
+}
+
+.video-userdrop-info-intro img.video-userdrop-info-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 32px;
+  height: auto;
+  border-radius: 50%;
+  margin-top: 4px;
+  line-height: initial;
 }
 
 </style>
