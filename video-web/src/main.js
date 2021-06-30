@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -20,7 +21,7 @@ Vue.prototype.$api = Api;
 /* import CryptoJS from 'crypto-js'; */
 
 Vue.config.productionTip = false
-
+/* elementUI  cnpm i element-ui -S  */
 /* elementUI */
 Vue.use(ElementUI);
 
@@ -28,6 +29,8 @@ Vue.use(ElementUI);
 Vue.use(VueVideoPlayer)
 
 Vue.use(AudioPlayer)
+
+/* npm install --save vue-router */
 
 router.beforeEach((to, from, next) => {
   if(to.meta.title) {
