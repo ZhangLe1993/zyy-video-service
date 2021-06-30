@@ -176,8 +176,8 @@ export default {
 .links-office li .nav-xialaList a.screen-sm-show{display: none;}
 .links-nav-spec{margin-right: 37px;}
 .links-nav-spec .nav-link-tips{position: absolute;top: 3px;right: -16px;display: block;width: 28px;height: 17px;border: 1px solid #33CFFF;border-radius: 4px;font-size: 12px;color: #33CFFF;font-family: "微软雅黑", Microsoft YaHei, PingFang-SC-Medium, Verdana;letter-spacing: 0;text-align: center;line-height: 15px;box-sizing: border-box;}
-.video-list .video-name .type.video-type8{background: url(//static.699pic.com/images/activity/4k8k.png) no-repeat -30px -50px;display: inline-block;width: 30px;height: 21px;top: 8px;}
-.video-list .video-name .type.video-type4{background: url(//static.699pic.com/images/activity/4k8k.png) no-repeat 9px -50px;display: inline-block;width: 30px;height: 21px;top: 8px;}
+.video-list .video-name .type.video-type8{background: url(~@/assets/4k8k.png) no-repeat -30px -50px;display: inline-block;width: 30px;height: 21px;top: 8px;}
+.video-list .video-name .type.video-type4{background: url(~@/assets/4k8k.png) no-repeat 9px -50px;display: inline-block;width: 30px;height: 21px;top: 8px;}
 @media screen and (max-width: 1922px) and (min-width: 1470px){
   .header-box_office {width: 1328px;}
   .video-list .video-name .type.video-type8,.video-list .video-name .type.video-type4{top: 10px;}
@@ -194,7 +194,7 @@ export default {
   .nav-link-tips{right: -28px;}
 }
 .idx-info-wrap .drop-wrap li:hover a{color: #18BCEF;}
-.video-vips-type{position: absolute;bottom: 0;left: 0;width: 109px;height: 47px;padding: 20px 0 0 10px;background: url("//static.699pic.com/images/video/video-vips-type-bg.png") no-repeat center top;font-size: 14px;color: #FFFFFF;letter-spacing: 0;line-height: 20px;z-index: 4;box-sizing: border-box;}
+.video-vips-type{position: absolute;bottom: 0;left: 0;width: 109px;height: 47px;padding: 20px 0 0 10px;background: url("~@/assets/video-vips-type-bg.png") no-repeat center top;font-size: 14px;color: #FFFFFF;letter-spacing: 0;line-height: 20px;z-index: 4;box-sizing: border-box;}
 /* 竖版视频 */
 .video-list .video-box  video.video-spec {object-fit: contain;background: #000000;}
 .video-list .video-box .video-cover-img{width: 100%;height: 100%;position: absolute;left: 0;top: 0;z-index: 2;background: #000000;text-align: center;}
@@ -230,7 +230,7 @@ video {
 }
 
 .top-bg {
-  background: url(https://static.699pic.com/images/video/newvideo-banner.jpg) center #100E0D;
+  background: url(https:~@/assets/newvideo-banner.jpg) center #100E0D;
   width: 100%;
   height: 680px;
   position: absolute;
@@ -277,14 +277,14 @@ video {
 .logo-link {
   width: 62px;
   height: 30px;
-  background: url(//static.699pic.com/images/video/newvideo-logo.png) no-repeat -2px 0;
+  background: url(~@/assets/newvideo-logo.png) no-repeat -2px 0;
   transition: none;
 }
 
 .logo-pot {
   width: 24px;
   height: 30px;
-  background: url(//static.699pic.com/images/video/newvideo-logo.png) no-repeat -63px 0;
+  background: url(~@/assets/newvideo-logo.png) no-repeat -63px 0;
 }
 .fl {
   float: left;
@@ -545,7 +545,7 @@ li {
 .video-activity-pertop-tips::after{position: absolute;bottom: -8px;left: 50%;content: "";border-width: 4px;border-style: solid;border-color: #f54527 transparent transparent transparent;margin-left: -4px;}
 
 
-.video-vip-link .video-vips.video-vips-act{height: 402px !important;background: url("//static.699pic.com/images/activity/vipStation94-head.jpg") no-repeat center top;}
+.video-vip-link .video-vips.video-vips-act{height: 402px !important;background: url("~@/assets/vipStation94-head.jpg") no-repeat center top;}
 .video-vips-act .video-vips-head{background: none;}
 .videoSvip-activity-pertop{display: block;width: 142px;height: 35px;margin: 160px auto 0;background-image: linear-gradient(135deg, #EE250D 0%, #FA603D 100%);box-shadow: 0 3px 8px 0 rgba(0,0,0,0.35);border-radius: 18px;line-height: 35px;font-size: 18px;color: #ffffff;letter-spacing: 0;text-align: center;transition: .3s;}
 .videoSvip-activity-pertop:hover{background-image: linear-gradient(135deg, #FA603D 0%, #EE250D 100%);transform: translateY(-2px);}

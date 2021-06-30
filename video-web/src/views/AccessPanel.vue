@@ -2,11 +2,11 @@
   <div>
     <div id="login-box_home" :style="dialogVisible">
       <div class="login-box_l">
-        <img src="//static.699pic.com/v2.0/Images/newloginbox/login-side_1.png" alt="">
+        <img :src="loginSide" alt="">
       </div>
       <div class="login-box_r">
         <div class="login-box_close" @click="handleClose"><i class="iconfont icon-guanbi"></i></div>
-        <p class="login-box_logo"><img src="//static.699pic.com/images/index/logo2.png" alt=""></p>
+        <p class="login-box_logo"><img :src="logo2" alt=""></p>
 
         <p class="login-box_desc" :style="operationToolsVisibleStyle"><span>超过18,084,862名用户加入沐婉清网观看视频</span></p>
 
@@ -43,22 +43,22 @@
           </p>
           <div class="login-area_content">
             <div :class="verfyLoginPanelVisible">
-              <input @input="onChange" type="text" maxlength="11" class="login-area_number js-input-phone js-focus-phone" name="phone_code_login" data-phone="login-area_number" placeholder="请输入手机号或邮箱"/>
+              <input @input="onChange" v-model="phone" type="text" maxlength="11" class="login-area_number js-input-phone js-focus-phone" name="phone_code_login" data-phone="login-area_number" placeholder="请输入手机号或邮箱"/>
               <div class="code">
-                <input type="number" class="login-area_code js-area-code" name="code_code_login" data-area="login-area_code" placeholder="请输入验证码" autocomplete="off">
+                <input type="number" v-model="code" class="login-area_code js-area-code" name="code_code_login" data-area="login-area_code" placeholder="请输入验证码" autocomplete="off">
                 <form theme="simple" onsubmit="return false;" style="height:100%;">
                   <button :class="showVerfyBtn" name="getcode_code_login">获取验证码</button>
                 </form>
               </div>
-              <button class="js-phone-login-btn login-area_item-passwd js-btn-submit" name="btn_code_login">登录</button>
+              <button class="js-phone-login-btn login-area_item-passwd js-btn-submit" name="btn_code_login" @click="codeLogin">登录</button>
             </div>
             <div :class="passwordLoginPanelVisible">
-              <input type="text" class="login-area_account js-focus-phone" name="phone_passwd_login" placeholder="请输入手机或邮箱" autocomplete="off">
+              <input type="text" v-model="phone2" class="login-area_account js-focus-phone" name="phone_passwd_login" placeholder="请输入手机或邮箱" autocomplete="off">
               <div>
-                <input type="password" class="login-area_pwd" name="passwd_passwd_login" placeholder="请输入密码" autocomplete="off">
+                <input type="password" v-model="password"  class="login-area_pwd" name="passwd_passwd_login" placeholder="请输入密码" autocomplete="off">
               </div>
               <a href="/register/resetPasswd" target="_blank">忘记密码</a>
-              <button class="js-account-login-btn  js-btn-submit" name="btn_passwd_login">登录</button>
+              <button class="js-account-login-btn  js-btn-submit" name="btn_passwd_login" @click="passwordLogin">登录</button>
             </div>
           </div>
         </div>
@@ -72,27 +72,27 @@
           <div class="regist-area_content">
             <div :class="verfyRegistPanelVisible">
 
-              <input type="text" maxlength="11" class="regist-area_number js-input-phone js-focus-phone" name="phone_code_regist" data-phone="regist-area_number" placeholder="请输入手机号或邮箱">
+              <input  @input="onChange1" type="text" maxlength="11" v-model="phone3" class="regist-area_number js-input-phone js-focus-phone" name="phone_code_regist" data-phone="regist-area_number" placeholder="请输入手机号或邮箱">
               <div class="code">
-                <input type="number" class="regist-area_code js-area-code" name="code_code_regist" data-area="js-area-code" placeholder="请输入验证码" autocomplete="off">
+                <input type="number" v-model="code3" class="regist-area_code js-area-code" name="code_code_regist" data-area="js-area-code" placeholder="请输入验证码" autocomplete="off">
                 <form theme="simple" onsubmit="return false;" style="height:100%;">
-                  <button class="disabled js-get-verify-btn js-get-verify-btn-1" name="getcode_code_regist">获取验证码</button>
+                  <button :class="showVerfyBtn1" name="getcode_code_regist">获取验证码</button>
                 </form>
               </div>
-              <button class="js-phone-regist-btn js-btn-submit" name="btn_code_regist">注册</button>
+              <button class="js-phone-regist-btn js-btn-submit" name="btn_code_regist" @click="codeRegist" >注册</button>
             </div>
             <div :class="passwordRegistPanelVisible">
-              <input type="text" class="regist-area_account js-input-phone js-focus-phone" name="phone_passwd_regist" data-phone="regist-area_account" placeholder="请输入手机号或邮箱" autocomplete="off">
+              <input  @input="onChange2" type="text" v-model="phone4" class="regist-area_account js-input-phone js-focus-phone" name="phone_passwd_regist" data-phone="regist-area_account" placeholder="请输入手机号或邮箱" autocomplete="off">
               <div class="code">
-                <input type="number" class="regist-area_code js-area-code" name="code_passwd_regist" data-area="regist-area_code" placeholder="请输入验证码" autocomplete="off">
+                <input type="number" v-model="code4" class="regist-area_code js-area-code" name="code_passwd_regist" data-area="regist-area_code" placeholder="请输入验证码" autocomplete="off">
                 <form theme="simple" onsubmit="return false;" style="height:100%;">
-                  <button class="disabled js-get-verify-btn js-get-verify-btn-2" name="getcode_passwd_regist">获取验证码</button>
+                  <button :class="showVerfyBtn2" name="getcode_passwd_regist">获取验证码</button>
                 </form>
               </div>
               <div>
-                <input type="password" class="regist-area_pwd js-area-pwd" name="passwd_passwd_regist" placeholder="请设置密码" autocomplete="off">
+                <input type="password" v-model="password4" class="regist-area_pwd js-area-pwd" name="passwd_passwd_regist" placeholder="请设置密码" autocomplete="off">
               </div>
-              <button class="js-account-regist-btn js-btn-submit" name="btn_passwd_regist" style="margin-top: 15px;">注册</button>
+              <button class="js-account-regist-btn js-btn-submit" name="btn_passwd_regist" style="margin-top: 15px;" @click="passwordRegist" >注册</button>
             </div>
           </div>
         </div>
@@ -127,6 +127,8 @@ export default {
       goLoginPhone: 'go-login hide',
       goRegist: 'go-regist',
       showVerfyBtn: 'disabled js-get-verify-btn js-get-verify-btn-0',
+      showVerfyBtn1: 'disabled js-get-verify-btn js-get-verify-btn-1',
+      showVerfyBtn2: 'disabled js-get-verify-btn js-get-verify-btn-2',
       loginActive: 'active',
       loginNotActive: '',
       registActive: 'active',
@@ -139,6 +141,18 @@ export default {
       loginWA: { qqLogin: 'QQ登录', wxLogin: '微信登录', title: '手机/邮箱登录' },
       registWA: { qqRegist: 'QQ注册', wxRegist: '微信注册', title: '手机/邮箱注册' },
       tkClass: 'regist-text-tips hide',
+      logo2: require("@/assets/logo2.png"),
+      loginSide: require("@/assets/login-side_1.png"),
+      //
+      phone: '',
+      code: '',
+      phone2: '',
+      password: '',
+      phone3: '',
+      code3: '',
+      phone4: '',
+      code4: '',
+      password4: '',
     };
   },
   methods: {
@@ -227,10 +241,122 @@ export default {
       this.toWexQQLoginPanel();
     },
     onChange(e) {
+      console.log(e);
+      if(this.isPone(this.phone) || this.isEmail(this.phone)) {
+        this.showVerfyBtn = 'js-get-verify-btn js-get-verify-btn-0';
+      } else {
+        this.showVerfyBtn = 'disabled js-get-verify-btn js-get-verify-btn-0';
+      }
+    },
+    onChange1(e) {
       console.log(e)
+      if(this.isPone(this.phone3) || this.isEmail(this.phone3)) {
+        this.showVerfyBtn1 = 'js-get-verify-btn js-get-verify-btn-1';
+      } else {
+        this.showVerfyBtn1 = 'disabled js-get-verify-btn js-get-verify-btn-1';
+      }
+    },
+    onChange2(e) {
+      console.log(e)
+      if(this.isPone(this.phone4) || this.isEmail(this.phone4)) {
+        this.showVerfyBtn2 = 'js-get-verify-btn js-get-verify-btn-2';
+      } else {
+        this.showVerfyBtn2 = 'disabled js-get-verify-btn js-get-verify-btn-2';
+      }
+    },
+    codeLogin() {
+      const obj = { phone: this.phone, code: this.code };
 
-      this.showVerfyBtn = 'js-get-verify-btn js-get-verify-btn-0';
-    }
+      if(this.phone === '') {
+        this.open('手机号或邮箱不能为空');
+        return;
+      }
+      if(!this.isPone(this.phone) && !this.isEmail(this.phone)) {
+        this.open('手机号或邮箱格式不正确');
+        return;
+      }
+      if(this.code === ''){
+        this.open('验证码不能为空');
+        return;
+      }
+      console.log(obj);
+    },
+    passwordLogin() {
+      const obj = { phone: this.phone2, password: this.password };
+      if(this.phone2 === '') {
+        this.open('手机号或邮箱不能为空');
+        return;
+      }
+      if(!this.isPone(this.phone2) && !this.isEmail(this.phone2)) {
+        this.open('手机号或邮箱格式不正确');
+        return;
+      }
+      if(this.password === '') {
+        this.open('密码不能为空');
+        return;
+      }
+      console.log(obj);
+    },
+    codeRegist() {
+      const obj = { phone: this.phone3, code: this.code3 };
+      if(this.phone3 === '') {
+        this.open('手机号或邮箱不能为空');
+        return;
+      }
+      if(!this.isPone(this.phone3) && !this.isEmail(this.phone3)) {
+        this.open('手机号或邮箱格式不正确');
+        return;
+      }
+      if(this.code3 === ''){
+        this.open('验证码不能为空');
+        return;
+      }
+      console.log(obj);
+    },
+    passwordRegist() {
+      if(this.phone4 === '') {
+        this.open('手机号或邮箱不能为空');
+        return;
+      }
+      if(!this.isPone(this.phone4) && !this.isEmail(this.phone4)) {
+        this.open('手机号或邮箱格式不正确');
+        return;
+      }
+      if(this.code4 === ''){
+        this.open('验证码不能为空');
+        return;
+      }
+      if(this.password4 === ''){
+        this.open('密码不能为空');
+        return;
+      }
+      const obj = { phone: this.phone4, code: this.code4, password: this.password4 };
+      console.log(obj);
+    },
+    open(text) {
+      this.$notify({
+        title: '警告',
+        message: text,
+        type: 'warning'
+      });
+    },
+    isPone(text) {
+      var myreg = /^1[3,4,5,6,7,8]\d{9}$/;
+      if (!myreg.test(text)) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    isEmail(text) {
+      var myreg = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+      if (!myreg.test(text)) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    //
   },
 }
 </script>

@@ -269,7 +269,7 @@ export default {
   width: 109px;
   height: 47px;
   padding: 20px 0 0 10px;
-  background: url(//static.699pic.com/images/video/video-vips-type-bg.png) no-repeat center top;
+  background: url(~@/assets/video-vips-type-bg.png) no-repeat center top;
   font-size: 14px;
   color: #FFFFFF;
   letter-spacing: 0;

@@ -16,6 +16,9 @@ import '@liripeng/vue-audio-player/lib/vue-audio-player.css'
 import Api from './service/service.js';
 Vue.prototype.$api = Api;
 
+/* cnpm install crypto-js --save */
+/* import CryptoJS from 'crypto-js'; */
+
 Vue.config.productionTip = false
 
 /* elementUI */

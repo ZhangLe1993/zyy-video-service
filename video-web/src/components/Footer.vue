@@ -174,7 +174,7 @@ p {
   margin-right: 2px;
   width: 15px;
   height: 16px;
-  background-image: url(//static.699pic.com/images/index/bottomFilingIcon.png);
+  background-image: url(~@/assets/bottomFilingIcon.png);
   vertical-align: -3px;
 }
 

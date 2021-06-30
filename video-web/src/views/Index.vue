@@ -3,7 +3,7 @@
     <div class="top-office">
       <div class="top-bg"></div>
       <div class="top-video-bg" style="z-index: -1;">
-        <video src="https://static.699pic.com/video/video-banner-v1.1.mp4" loop autoplay="autoplay" muted="muted"></video>
+        <video :src="videoBanner" loop autoplay="autoplay" muted="muted"></video>
       </div>
 
       <div class="bottom-linear"></div>
@@ -12,7 +12,7 @@
         <div class="header-box_office">
           <a href="//699pic.com" class="logo-link fl"></a>
           <span class="fl logo-pot"></span>
-          <a href="/video/" class="logo-link fl logo-link-video" title="视频素材"></a>
+          <a href="/video/" class="logo-link fl logo-link-video" title="网站首页"></a>
           <ul class="links-office">
             <li>
               <a class="nav-link active" href="//699pic.com/media/">首页</a>
@@ -37,8 +37,8 @@
               <div class="nav-xialaList">
                 <a class="screen-sm-show" href="/video/351.html">其他</a>
                 <a href="/video/460.html">少儿</a>
-                <a href="/video/363.html">纪录片</a>
-                <a href="/video/449.html">MV</a>
+                <a href="/video/363.html">电竞</a>
+                <a href="/video/449.html">学习</a>
               </div>
             </li>
           </ul>
@@ -162,7 +162,7 @@
           <div class="search-office_r"><i class="iconfont icon-sousuo"></i><span>搜索</span></div>
         </div>
         <p class="recommends-office">热搜词：
-          <a href="//699pic.com/media/video-piantou.html" target="_blank">头罗大陆</a>
+          <a href="//699pic.com/media/video-piantou.html" target="_blank">斗罗大陆</a>
           <a href="//699pic.com/media/video-zhongguofeng.html" target="_blank">斗破苍穹</a>
           <a href="//699pic.com/media/video-qiyexuanchuan.html" target="_blank">黑丝</a>
           <a href="//699pic.com/video-all-125753-0-1-all-popular-0-0-0-0.html" target="_blank">蕾丝</a>
@@ -196,6 +196,7 @@ export default {
     return {
       show: 'display:none',
       dialogVisible: 'display:none;',
+      videoBanner: require("@/assets/Woman - 73404.mp4"),
     }
   },
   methods: {
@@ -241,8 +242,8 @@ export default {
 .links-office li .nav-xialaList a.screen-sm-show{display: none;}
 .links-nav-spec{margin-right: 37px;}
 .links-nav-spec .nav-link-tips{position: absolute;top: 3px;right: -16px;display: block;width: 28px;height: 17px;border: 1px solid #33CFFF;border-radius: 4px;font-size: 12px;color: #33CFFF;font-family: "微软雅黑", Microsoft YaHei, PingFang-SC-Medium, Verdana;letter-spacing: 0;text-align: center;line-height: 15px;box-sizing: border-box;}
-.video-list .video-name .type.video-type8{background: url(//static.699pic.com/images/activity/4k8k.png) no-repeat -30px -50px;display: inline-block;width: 30px;height: 21px;top: 8px;}
-.video-list .video-name .type.video-type4{background: url(//static.699pic.com/images/activity/4k8k.png) no-repeat 9px -50px;display: inline-block;width: 30px;height: 21px;top: 8px;}
+.video-list .video-name .type.video-type8{background: url(~@/assets/4k8k.png) no-repeat -30px -50px;display: inline-block;width: 30px;height: 21px;top: 8px;}
+.video-list .video-name .type.video-type4{background: url(~@/assets/4k8k.png) no-repeat 9px -50px;display: inline-block;width: 30px;height: 21px;top: 8px;}
 @media screen and (max-width: 1922px) and (min-width: 1470px){
   .header-box_office {width: 1328px;}
   .video-list .video-name .type.video-type8,.video-list .video-name .type.video-type4{top: 10px;}
@@ -259,7 +260,7 @@ export default {
   .nav-link-tips{right: -28px;}
 }
 .idx-info-wrap .drop-wrap li:hover a{color: #18BCEF;}
-.video-vips-type{position: absolute;bottom: 0;left: 0;width: 109px;height: 47px;padding: 20px 0 0 10px;background: url("//static.699pic.com/images/video/video-vips-type-bg.png") no-repeat center top;font-size: 14px;color: #FFFFFF;letter-spacing: 0;line-height: 20px;z-index: 4;box-sizing: border-box;}
+.video-vips-type{position: absolute;bottom: 0;left: 0;width: 109px;height: 47px;padding: 20px 0 0 10px;background: url("~@/assets/video-vips-type-bg.png") no-repeat center top;font-size: 14px;color: #FFFFFF;letter-spacing: 0;line-height: 20px;z-index: 4;box-sizing: border-box;}
 /* 竖版视频 */
 .video-list .video-box  video.video-spec {object-fit: contain;background: #000000;}
 .video-list .video-box .video-cover-img{width: 100%;height: 100%;position: absolute;left: 0;top: 0;z-index: 2;background: #000000;text-align: center;}
@@ -295,7 +296,7 @@ video {
 }
 
 .top-bg {
-  background: url(https://static.699pic.com/images/video/newvideo-banner.jpg) center #100E0D;
+  background: url(~@/assets/newvideo-banner.jpg) center #100E0D;
   width: 100%;
   height: 680px;
   position: absolute;
@@ -342,14 +343,14 @@ video {
 .logo-link {
   width: 62px;
   height: 30px;
-  background: url(//static.699pic.com/images/video/newvideo-logo.png) no-repeat -2px 0;
+  background: url('~@/assets/newvideo-logo.png') no-repeat -2px 0;
   transition: none;
 }
 
 .logo-pot {
   width: 24px;
   height: 30px;
-  background: url(//static.699pic.com/images/video/newvideo-logo.png) no-repeat -63px 0;
+  background: url('~@/assets/newvideo-logo.png') no-repeat -63px 0;
 }
 .fl {
   float: left;
@@ -1008,7 +1009,7 @@ img {
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.20);
   border-radius: 10px;
   box-sizing: border-box;
-  background: #FFFFFF url(//static.699pic.com/images/video/video-userdrop-bg.png) no-repeat center top;
+  background: #FFFFFF url(~@/assets/video-userdrop-bg.png) no-repeat center top;
   z-index: 5;
   visibility: hidden;
   opacity: 0;
