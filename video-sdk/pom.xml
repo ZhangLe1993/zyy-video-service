@@ -13,6 +13,14 @@
     <url>http://www.example.com</url>
 
     <properties>
+        <java.version>1.8</java.version>
+
+        <!-- javacpp当前版本 -->
+        <javacpp.version>1.4.4</javacpp.version>
+        <!-- opencv版本 -->
+        <!--<opencv.version>3.4.3</opencv.version>-->
+        <!-- ffmpeg版本 -->
+        <ffmpeg.version>4.1</ffmpeg.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
