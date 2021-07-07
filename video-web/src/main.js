@@ -4,6 +4,8 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+// import infiniteScroll from 'vue-infinite-scroll';
+import { InfiniteScroll } from 'element-ui';
 
 /* 播放器 */
 import VueVideoPlayer from 'vue-video-player'
@@ -24,6 +26,18 @@ Vue.config.productionTip = false
 /* elementUI  cnpm i element-ui -S  */
 /* elementUI */
 Vue.use(ElementUI);
+
+/* 无限滚动 cnpm install vue-infinite-scroll --save */
+Vue.use(InfiniteScroll);
+// Vue.use(InfiniteScroll);
+
+/*
+* echarts
+* cnpm install echarts --save
+* */
+import echarts from 'echarts'
+Vue.use(echarts);
+Vue.prototype.$echarts = echarts;
 
 /* 播放器 */
 Vue.use(VueVideoPlayer)

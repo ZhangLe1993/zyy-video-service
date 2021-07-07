@@ -1,7 +1,7 @@
 <template>
   <div class="header-wrapper--1ulkm">
     <div class="wapper">
-      <div class="header--title">小作坊 创作者平台</div>
+      <div class="header--title">沐婉清 创作者平台</div>
       <el-avatar> user </el-avatar>
     </div>
   </div>
