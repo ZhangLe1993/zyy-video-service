@@ -36,7 +36,7 @@ Vue.use(InfiniteScroll);
 * cnpm install echarts --save
 * */
 import echarts from 'echarts'
-Vue.use(echarts);
+// Vue.use(echarts);
 Vue.prototype.$echarts = echarts;
 
 /* 播放器 */
