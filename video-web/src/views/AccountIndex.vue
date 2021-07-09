@@ -38,6 +38,10 @@
               <!-- 视频管理 -->
               <VideoManage />
             </div>
+            <div v-if="visible.followManage" style="height: calc(100%);">
+              <!-- 关注管理 -->
+              <FollowManage />
+            </div>
           </el-col>
 
         </el-row>
@@ -58,6 +62,7 @@ import AccountHeader from '../components/AccountHeader';
 import Footer from '../components/Footer';
 import HomePage from "@/components/HomePage";
 import VideoManage from "@/components/VideoManage";
+import FollowManage from "@/components/FollowManage";
 export default {
   name: "AccountIndex",
   components: {
@@ -66,6 +71,7 @@ export default {
     Footer: Footer,
     HomePage: HomePage,
     VideoManage: VideoManage,
+    FollowManage: FollowManage,
   },
   data() {
     return {
@@ -75,7 +81,7 @@ export default {
         style: 'font-weight: 700;font-size: 14px;',
         icon: 'el-icon-s-home',
         label: '首页',
-        func: 'drawHomePage',
+        func: 'homePage',
       },{
         style: 'font-weight: 700;font-size: 14px;',
         icon: 'el-icon-menu',
@@ -84,7 +90,7 @@ export default {
           icon: '',
           style: '',
           label: '视频管理',
-          func: 'drawVideoManage',
+          func: 'videoManage',
         }]
       }, {
         style: 'font-weight: 700; font-size: 14px;',
@@ -93,7 +99,7 @@ export default {
         children: [{
           style: '',
           label: '关注管理',
-
+          func: 'followManage',
         }, {
           style: '',
           label: '粉丝管理',
@@ -135,7 +141,21 @@ export default {
         children: 'children',
         label: 'label'
       },
-      visible: { homePage: true, videoManage: false },
+      visible: {
+        homePage: true,
+        videoManage: false,
+        followManage: false,
+        fansManage: false,
+        commentManage: false,
+        messageManage: false,
+        Dashboard: false,
+        worksAnalysis: false,
+        fansPortrait: false,
+        weeklyPublication: false,
+        instructions: false,
+        contact: false,
+        contentSpecification: false,
+      },
     };
   },
   mounted() {
@@ -145,8 +165,21 @@ export default {
   methods: {
     handleNodeClick(data) {
       console.log(data);
-      if(data['func'] !== undefined && data['func'] !== null || data['func'] !== "") {
-        this.callModelFun(data.func);
+      console.log(data['func']);
+      if(data['func'] !== undefined && data['func'] !== null && data['func'] !== "") {
+        const name = data.func;
+        // const toUpper = name.substr(0, 1);
+        // const lower = name.substr(1, name.length - 1);
+        // console.log(toUpper.toUpperCase() + lower);
+        const _visible = this.visible;
+        Object.keys(_visible).forEach((k) => {
+          if(k === name) {
+            _visible[k] = true;
+          } else {
+            _visible[k] = false;
+          }
+        });
+        // this.callModelFun("draw" + toUpper.toUpperCase() + lower);
       }
     },
     /**
@@ -159,7 +192,6 @@ export default {
       // this.$options.methods[funcName]()
     },
     drawVideoManage(_this) {
-      console.log();
       console.log('渲染视频管理');
       _this.visible = { homePage: false, videoManage: true };
     },
@@ -180,7 +212,7 @@ export default {
   top:0;
   left: 0;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #f7f8f9 !important;
 }
 
 .container {
@@ -191,14 +223,14 @@ export default {
 }
 
 .is-current >.el-tree-node__content .custom-tree-node {
-  color: red;
+  color: #fe2c55;
+  font-weight: 700;
 }
 
 </style>
 
 <style>
 
-/* height: calc(100vh - 85px); */
 .el-tree .el-tree-node {
   white-space: nowrap;
   outline: 0;
@@ -206,5 +238,12 @@ export default {
   margin-top: 8px;
 }
 
+.el-card.is-always-shadow, .el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
+  box-shadow: 0 0 0 0 rgba(0,0,0,.1) !important;
+}
+
+.el-card {
+  border: 0 solid #EBEEF5 !important;
+}
 
 </style>

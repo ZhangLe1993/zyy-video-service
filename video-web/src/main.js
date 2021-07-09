@@ -7,6 +7,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 // import infiniteScroll from 'vue-infinite-scroll';
 import { InfiniteScroll } from 'element-ui';
 
+/* 引入 阿里 icon */
+import './assets/iconfont/iconfont.css'
+
 /* 播放器 */
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
@@ -36,7 +39,7 @@ Vue.use(InfiniteScroll);
 * cnpm install echarts --save
 * */
 import echarts from 'echarts'
-// Vue.use(echarts);
+Vue.use(echarts);
 Vue.prototype.$echarts = echarts;
 
 /* 播放器 */
