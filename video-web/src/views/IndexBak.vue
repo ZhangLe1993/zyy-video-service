@@ -230,7 +230,7 @@ video {
 }
 
 .top-bg {
-  background: url(https:~@/assets/newvideo-banner.jpg) center #100E0D;
+  background: url(~@/assets/newvideo-banner.jpg) center #100E0D;
   width: 100%;
   height: 680px;
   position: absolute;

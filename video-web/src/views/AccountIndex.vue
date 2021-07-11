@@ -42,6 +42,18 @@
               <!-- 关注管理 -->
               <FollowManage />
             </div>
+            <div v-if="visible.fansManage" style="height: calc(100%);">
+              <!-- 粉丝管理 -->
+              <FansManage />
+            </div>
+            <div v-if="visible.commentManage" style="height: calc(100%);">
+              <!-- 评论管理 -->
+              <CommentManage />
+            </div>
+            <div v-if="visible.messageManage" style="height: calc(100%);">
+              <!-- 评论管理 -->
+              <MessageManage />
+            </div>
           </el-col>
 
         </el-row>
@@ -63,6 +75,9 @@ import Footer from '../components/Footer';
 import HomePage from "@/components/HomePage";
 import VideoManage from "@/components/VideoManage";
 import FollowManage from "@/components/FollowManage";
+import FansManage from "@/components/FansManage";
+import CommentManage from "@/components/CommentManage";
+import MessageManage from "@/components/MessageManage";
 export default {
   name: "AccountIndex",
   components: {
@@ -72,6 +87,9 @@ export default {
     HomePage: HomePage,
     VideoManage: VideoManage,
     FollowManage: FollowManage,
+    FansManage: FansManage,
+    CommentManage: CommentManage,
+    MessageManage: MessageManage,
   },
   data() {
     return {
@@ -103,12 +121,15 @@ export default {
         }, {
           style: '',
           label: '粉丝管理',
+          func: 'fansManage',
         }, {
           style: '',
           label: '评论管理',
+          func: 'commentManage',
         }, {
           style: '',
           label: '私信管理',
+          func: 'messageManage',
         }]
       }, {
         style: 'font-weight: 700; font-size: 14px;',
@@ -225,25 +246,6 @@ export default {
 .is-current >.el-tree-node__content .custom-tree-node {
   color: #fe2c55;
   font-weight: 700;
-}
-
-</style>
-
-<style>
-
-.el-tree .el-tree-node {
-  white-space: nowrap;
-  outline: 0;
-  margin-bottom: 8px;
-  margin-top: 8px;
-}
-
-.el-card.is-always-shadow, .el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
-  box-shadow: 0 0 0 0 rgba(0,0,0,.1) !important;
-}
-
-.el-card {
-  border: 0 solid #EBEEF5 !important;
 }
 
 </style>

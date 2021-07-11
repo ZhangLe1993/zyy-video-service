@@ -1,7 +1,7 @@
 <template>
   <el-card style="height: calc(100% - 9px); overflow: auto;">
     <div style="width:100%; ">
-      <div class="follow-title">关注列表</div>
+      <div class="follow-title">粉丝列表</div>
       <div style="width:100%;">
         <el-table
             :data="tableData"
@@ -25,7 +25,7 @@
               prop="address"
               label="操作">
             <template slot-scope="scope">
-              <el-button @click="handleClick(scope.row)" type="text" size="small">取消关注</el-button>
+              <el-button @click="handleClick(scope.row)" type="text" size="small">关注</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -42,13 +42,13 @@
             :total="total">
         </el-pagination>
       </div>
-  </div>
+    </div>
   </el-card>
 </template>
 
 <script>
 export default {
-  name: "FollowManage",
+  name: "FansManage",
   created() {
     this.total = this.tableData.length;
   },
@@ -145,5 +145,4 @@ export default {
   color: rgba(28,31,35,0.35);
   font-size: 12px;
 }
-
 </style>
