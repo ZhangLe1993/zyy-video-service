@@ -8,7 +8,7 @@
         <el-row :gutter="20" style="width:1260px; margin: 0 auto;margin-top:20px;height: calc(100%);">
           <el-col :span="6" style="height: calc(100% - 9px);">
             <el-card class="box-card" style="height: calc(100%);">
-              <el-button type="danger" style="width: 100%;"> 上传视频</el-button>
+              <el-button type="xianh" style="width: 100%;font-weight: 700" @click="toPublishPage()"> 发 布 视 频</el-button>
               <el-divider></el-divider>
               <el-tree
                   style="padding-bottom: 10px;"
@@ -30,6 +30,10 @@
           </el-col>
 
           <el-col :span="18" style="height: calc(100%);">
+            <div v-if="visible.videoPublish" style="height: calc(100%);">
+              <!-- 发布视频 -->
+              <VideoPublish />
+            </div>
             <!-- 个人主页 -->
             <div v-if="visible.homePage" style="height: calc(100%);">
               <HomePage />
@@ -78,6 +82,7 @@ import FollowManage from "@/components/FollowManage";
 import FansManage from "@/components/FansManage";
 import CommentManage from "@/components/CommentManage";
 import MessageManage from "@/components/MessageManage";
+import VideoPublish from "@/components/VideoPublish";
 export default {
   name: "AccountIndex",
   components: {
@@ -90,6 +95,7 @@ export default {
     FansManage: FansManage,
     CommentManage: CommentManage,
     MessageManage: MessageManage,
+    VideoPublish: VideoPublish,
   },
   data() {
     return {
@@ -163,6 +169,7 @@ export default {
         label: 'label'
       },
       visible: {
+        videoPublish: false,
         homePage: true,
         videoManage: false,
         followManage: false,
@@ -185,7 +192,6 @@ export default {
   },
   methods: {
     handleNodeClick(data) {
-      console.log(data);
       console.log(data['func']);
       if(data['func'] !== undefined && data['func'] !== null && data['func'] !== "") {
         const name = data.func;
@@ -220,6 +226,16 @@ export default {
       console.log('渲染首页');
       _this.visible = { homePage: true, videoManage: false };
     },
+    toPublishPage() {
+      const _visible = this.visible;
+      Object.keys(_visible).forEach((k) => {
+        if(k === 'videoPublish') {
+          _visible[k] = true;
+        } else {
+          _visible[k] = false;
+        }
+      });
+    }
   }
 }
 </script>

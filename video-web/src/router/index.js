@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../views/Index.vue'
 import AccountIndex from '../views/AccountIndex.vue'
+import TestVue from "@/views/TestVue";
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,12 @@ Vue.use(VueRouter)
       name: 'AccountIndex',
       component: AccountIndex,
       meta:  { title: '沐婉清文化影视网 - 创作者服务平台' },
+    },
+    {
+      path: '/test',
+      name: 'TestVue',
+      component: TestVue,
+      meta:  { title: '测试页面' },
     },
 ]
 

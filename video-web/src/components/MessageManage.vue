@@ -12,25 +12,28 @@
                     <div class="semi-spin-children">
                       <ul class="semi-list-items" style="position: relative;">
                         <div style="overflow: visible; width: 0px;">
-                          <div aria-label="grid" aria-readonly="true"
-                               class="ReactVirtualized__Grid ReactVirtualized__List" role="grid" tabindex="0"
-                               style="box-sizing: border-box; direction: ltr; position: relative; width: 300px; will-change: transform; overflow: auto;">
+                          <div style="box-sizing: border-box; direction: ltr; position: relative; width: 300px; will-change: transform; overflow: auto;">
                             <div class="ReactVirtualized__Grid__innerScrollContainer" role="rowgroup"
                                  style="width: auto; height: 525px; max-width: 300px; max-height: 525px; overflow: hidden; position: relative;">
                               <div style="height: 105px; left: 0px; position: absolute; top: 0px; width: 100%;">
-                                <li role="list-item" class="semi-list-item active--3c4rW">
+                                <li class="semi-list-item active--3c4rW" v-for="item in userList" :key="item.userId">
                                   <div class="semi-list-item-body semi-list-item-body-flex-start">
-                                    <div class="semi-list-item-body-header"><a><span class="semi-badge"><span
-                                        class="semi-avatar semi-avatar-circle semi-avatar-medium semi-avatar-img"><img
-                                        src="//thirdqq.qlogo.cn/qqapp/1105602870/B1E20CD90A9808AA7A46D13CAC5C6457/40"></span><span
-                                        class="semi-badge-primary semi-badge-solid semi-badge-rightTop"
-                                        style="top: 5px; right: 5px;"></span></span></a></div>
+                                    <div class="semi-list-item-body-header">
+                                      <a>
+                                        <span class="semi-badge">
+                                          <span class="semi-avatar semi-avatar-circle semi-avatar-medium semi-avatar-img">
+                                            <img :src="item.avatar">
+                                          </span>
+                                          <span class="semi-badge-primary semi-badge-solid semi-badge-rightTop" style="top: 5px; right: 5px;"></span>
+                                        </span>
+                                      </a>
+                                    </div>
                                     <div class="semi-list-item-body-main">
                                       <div class="item--KCnu1">
                                         <div class="item-left--3c9d4">
                                           <div class="item-header--TmWg0">
                                             <div class="item-header-left--2PGUO"><span class="item-header-name--2tELM"
-                                                                                       style="color: rgba(22,24,35,0.5); font-weight: 500; cursor: pointer;">╬▍▓ぷ⊙●瑾</span>
+                                                                                       style="color: rgba(22,24,35,0.5); font-weight: 500; cursor: pointer;">{{item.nickname}}</span>
                                             </div>
                                             <span class="item-header-time--1wYfQ">07-02</span></div>
                                           <div class="item-content--1_Hjv">
@@ -110,7 +113,24 @@
 
 <script>
 export default {
-  name: "MessageManage"
+  name: "MessageManage",
+  data() {
+    return {
+      userList: [
+        {
+          avatar: "https://p26.douyinpic.com/img/tos-cn-avt-0015/495ec5cc4c85a35b2ae141f9ef7fca1c~c5_720x720.jpeg?from=4010531038",
+          nickname: "TT",
+          userId: "b"
+        },
+        {
+          avatar: "https://p9.douyinpic.com/aweme/720x720/2d59000039ca1688d215d.jpeg?from=4010531038",
+          nickname: "冰凌",
+          userId: "c"
+        }
+      ],
+    }
+  },
+
 }
 </script>
 
@@ -536,7 +556,7 @@ export default {
 }
 
 .box-header--6FAQc .box-header-name--2ha-- {
-  /*color: #161823;*/
+  color: #161823;
   font-size: 14px;
   margin-right: 12px;
 }
